@@ -1,5 +1,7 @@
 import User from '../models/user.model.js';
 import { connectToDataBase } from '../config/database.js';
+// const bcrypt = require('bcrypt');
+import bcrypt from 'bcrypt';
 
 export const registerUser = async (event, context, callback) => {
     console.log(event.body);
@@ -9,6 +11,9 @@ export const registerUser = async (event, context, callback) => {
             console.log(event.body);
             const userData = JSON.parse(event.body);
             console.log("userData");
+            const saltRounds = 10;
+            const hash = bcrypt.hashSync(userData.password, saltRounds);
+            userData.password = hash;
             await User.create(userData)
                 .then(user => {
                     callback(null, {
