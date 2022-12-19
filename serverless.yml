@@ -23,10 +23,12 @@ frameworkVersion: "3"
 provider:
   name: aws
   runtime: nodejs12.x
+  stage: dev
+  environment:
+    DB: "mongodb+srv://sid:sid@cluster0.xn3robh.mongodb.net/sid"
+    SECRET_KEY: "keyvalue"
 
 # you can overwrite defaults here
-#  stage: dev
-#  region: us-east-1
 
 # you can add statements to the Lambda function's IAM Role here
 #  iam:
@@ -60,15 +62,13 @@ provider:
 plugins:
   - serverless-offline
 functions:
-  hello:
-    handler: handler.hello
-#    The following are a few example events you can configure
-#    NOTE: Please make sure to change your handler code to work with those events
-#    Check the event documentation for details
-#    events:
-#      - httpApi:
-#          path: /users/create
-#          method: get
+  registerUser:
+    handler: src/functions/registration.registerUser
+    events:
+      - http:
+          path: users/registration
+          method: post
+          cors: true
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
