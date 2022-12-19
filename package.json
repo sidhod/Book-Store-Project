@@ -342,6 +342,8 @@
     "seek-bzip": "^1.0.6",
     "semver": "^7.3.8",
     "serverless": "^3.25.1",
+    "serverless-aws-documentation": "^1.1.0",
+    "serverless-reqvalidator-plugin": "^2.0.0",
     "setimmediate": "^1.0.5",
     "shebang-command": "^1.2.0",
     "shebang-regex": "^1.0.0",

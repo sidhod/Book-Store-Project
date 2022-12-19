@@ -61,6 +61,8 @@ provider:
 #    - include-me-dir/**
 plugins:
   - serverless-offline
+  - serverless-aws-documentation
+  - serverless-reqvalidator-plugin
 functions:
   registerUser:
     handler: src/functions/registration.registerUser
@@ -69,6 +71,9 @@ functions:
           path: users/registration
           method: post
           cors: true
+          request:
+            schemas:
+              application/json: ${file(src/apiSchema/userSchema.json)}
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)

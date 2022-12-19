@@ -1,0 +1,38 @@
+{
+    "definations": {},
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "title": "The Root Schema",
+    "required": [
+        "firstName",
+        "lastName",
+        "email",
+        "password"
+    ],
+    "properties": {
+        "firstName": {
+            "type": "string",
+            "title": "firstName",
+            "default": "",
+            "pattern": "^[a-zA-Z]+$"
+        },
+        "lastName": {
+            "type": "string",
+            "title": "lastName",
+            "default": "",
+            "pattern": "^[a-zA-Z]+$"
+        },
+        "email": {
+            "type": "string",
+            "title": "email",
+            "default": "",
+            "pattern": "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
+        },
+        "password": {
+            "type": "string",
+            "title": "password",
+            "default": "",
+            "pattern": "^[a-zA-Z0-9]{6,}"
+        }
+    }
+}
