@@ -74,6 +74,16 @@ functions:
           request:
             schemas:
               application/json: ${file(src/apiSchema/userSchema.json)}
+  loginUser:
+    handler: src/functions/loginUser.loginUser
+    events:
+      - http:
+          path: users/login
+          method: post
+          cors: true
+          # request:
+          #   schemas:
+          #     application/json: ${file(src/apiSchema/userSchema.json)}
 #      - websocket: $connect
 #      - s3: ${env:BUCKET}
 #      - schedule: rate(10 minutes)
